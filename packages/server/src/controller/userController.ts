@@ -1,12 +1,6 @@
 import request from 'request-promise'
 
 import logger from '../utils/logger';
-/**
- * 
- * Check This Package Out
- * https://www.npmjs.com/package/routing-controllers#using-request-and-response-objects
- */
-
 
  const getRockets = (req: any, res: any) => {
   try {
