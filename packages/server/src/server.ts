@@ -25,5 +25,3 @@ const PORT = process.env.PORT || 4000;
 })
 .listen(PORT, () => logger.info(`Server running on PORT ${PORT}`))
 
-
-
