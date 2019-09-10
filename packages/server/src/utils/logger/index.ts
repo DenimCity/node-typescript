@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 
 const { combine, timestamp, label, printf, colorize } = format;
 
-const myFormat = printf(({ level, message, label, timestamp }) => {
+const myFormat = printf(({ level, message, timestamp }) => {
 	timestamp = dayjs(timestamp).format('MM-DD-YY HH:mm:ss');
 	return `${timestamp} ${level}: ${message}`;
 });
