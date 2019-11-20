@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import express, { Express } from 'express';
+import express, { Express, Request, Response } from 'express';
 import logger from './utils/logger';
 import routes from './routes';
 
@@ -9,14 +9,14 @@ const PORT = process.env.PORT || 4000;
 
 server
 	.use(express.json())
-	.use((req, res, next) => {
+	.use((_req: Request, res: Response, next) => {
 		res.append('Access-Control-Allow-Methods', 'OPTIONS');
 		res.append('Cache-Control', 'no-store');
 		next();
 	})
 	.use(router)
 	.use('/api', routes)
-	.use((req, res, next) => {
+	.use((_req: Request, res, next) => {
 		res.locals.startTime = Date.now();
 		res.locals.errors = [];
 		next();

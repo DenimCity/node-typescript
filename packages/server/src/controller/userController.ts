@@ -1,17 +1,11 @@
-// import request from 'request-promise';
-import axios from 'axios';
+import { RocketService } from '../services/Rockets';
 
-import logger from '../utils/logger';
-
-const getRockets = async (req: any, res: any) => {
-	try {
-		logger.info(`Invoked ${getRockets.name.toUpperCase()}().`);
-		const response = await axios.get('https://api.spacexdata.com/v3/launches');
-		console.log('LOG: getRockets -> response', response.data);
-		return response.data;
-	} catch (err) {
-		return res.json({ error: err.message });
+const getRockets = async (_req: any, res: any) => {
+	const { response, error, msg } = await RocketService.GET_ROCKETS();
+	if (response) {
+		return res.send(response);
 	}
+	return res.json({ error, msg });
 };
 
 export default getRockets;
